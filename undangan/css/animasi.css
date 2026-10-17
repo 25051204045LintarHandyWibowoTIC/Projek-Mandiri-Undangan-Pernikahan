@@ -1,0 +1,10 @@
+/* animasi.css : animasi muncul saat scroll (kelas .anim dipasang JS) */
+
+/* ===== ANIMASI MUNCUL SAAT SCROLL (kelas .anim dipasang oleh JS) ===== */
+.anim { opacity: 0; translate: 0 48px; transition: opacity .9s ease, translate .9s ease, scale .9s ease; transition-delay: var(--tunda, 0s); }
+.anim-kiri { translate: -70px 0; }
+.anim-kanan { translate: 70px 0; }
+.anim-zoom { translate: 0 0; scale: .8; }
+.anim.tampil { opacity: 1; translate: 0 0; scale: 1; }
+.kartu.anim { transition: opacity .9s ease, translate .9s ease, transform .3s ease, box-shadow .3s ease; transition-delay: var(--tunda, 0s), var(--tunda, 0s), 0s, 0s; }
+

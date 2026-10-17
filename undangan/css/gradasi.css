@@ -1,0 +1,15 @@
+/* gradasi.css : gradasi latar biru + pink tiap bagian */
+
+/* ===== GRADASI LATAR PER BAGIAN (biru + pink) =====
+   Warna bawah satu bagian = warna atas bagian berikutnya, jadi sambungannya mulus.
+   GANTI: ubah kode warna di sini untuk menyesuaikan nuansa. */
+:root { --pink-l: #fbeaf1; --biru-l: #e9f0fa; --lila-l: #f1ecfa; }
+#beranda { background: radial-gradient(circle at 88% 6%, rgba(244, 170, 196, .35), transparent 45%), radial-gradient(circle at 4% 96%, rgba(120, 160, 215, .28), transparent 48%), linear-gradient(165deg, #fdf3f6, #eef3fb); }
+#mempelai { background: radial-gradient(circle at 8% 10%, rgba(120, 160, 215, .22), transparent 42%), radial-gradient(circle at 94% 92%, rgba(244, 170, 196, .3), transparent 45%), linear-gradient(180deg, #eef3fb, #fbeff3); }
+#acara { background: radial-gradient(circle at 92% 8%, rgba(244, 170, 196, .3), transparent 42%), radial-gradient(circle at 6% 90%, rgba(120, 160, 215, .25), transparent 45%), linear-gradient(180deg, #fbeff3, #e9f0fa); }
+#galeri { background: radial-gradient(circle at 50% 0%, rgba(190, 170, 230, .22), transparent 45%), linear-gradient(135deg, #e9f0fa 0%, #fbeaf1 55%, #f1ecfa 100%); }
+#lokasi { background: radial-gradient(circle at 10% 15%, rgba(244, 170, 196, .28), transparent 42%), radial-gradient(circle at 92% 88%, rgba(120, 160, 215, .26), transparent 45%), linear-gradient(180deg, #fbeaf1, #eaf1fb); }
+#reservasi { background: radial-gradient(circle at 90% 10%, rgba(120, 160, 215, .25), transparent 42%), radial-gradient(circle at 5% 92%, rgba(244, 170, 196, .3), transparent 45%), linear-gradient(165deg, #eaf1fb, #fdeef3); }
+#hadiah { background: radial-gradient(circle at 50% 100%, rgba(120, 160, 215, .28), transparent 50%), linear-gradient(180deg, #fdeef3, #dfe9f7); }
+.kaki { background: linear-gradient(135deg, #1b2a41 0%, #3b4f6b 55%, #a56c8a 100%); }
+

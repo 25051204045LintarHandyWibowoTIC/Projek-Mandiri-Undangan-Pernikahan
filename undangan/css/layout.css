@@ -1,0 +1,26 @@
+/* layout.css : navbar, jarak antar bagian, hero, grid galeri */
+
+/* ===== NAVBAR ===== */
+.bar-atas { background: rgba(251, 250, 248, 0.92); backdrop-filter: blur(6px); box-shadow: 0 2px 10px rgba(0, 0, 0, 0.08); }
+.navbar-brand { font-family: var(--font-judul); font-weight: 700; font-size: 1.5rem; color: var(--navy) !important; }
+
+/* ===== LAYOUT UMUM ===== */
+.bagian { padding: clamp(3rem, 6vw, 6rem) 0; }
+.bg-putih { background: var(--putih); }
+.hero { min-height: 100dvh; display: flex; align-items: center; padding: 6rem 0 3rem; background: radial-gradient(circle at 80% 10%, var(--blush), transparent 45%), var(--putih); }
+.hero .judul-besar { color: var(--navy); }
+.hitung div { min-width: 4.5rem; padding: .6rem; text-align: center; background: #fff; border: 1px solid var(--emas); border-radius: 12px; }
+.hitung span { display: block; font-family: var(--font-judul); font-size: 2rem; font-weight: 700; color: var(--navy); line-height: 1.1; }
+
+/* ===== GALERI (CSS Grid) ===== */
+.grid-galeri { display: grid; grid-template-columns: 1fr 1fr; gap: .75rem; }
+.grid-galeri .ph { min-height: 10rem; aspect-ratio: 1; }
+.grid-galeri .item-lebar { grid-column: span 2; aspect-ratio: 2 / 1; }
+.grid-galeri .ph img { transition: transform .5s ease; }
+.grid-galeri .ph:hover img { transform: scale(1.08) rotate(1deg); }
+@media (min-width: 992px) {
+  .grid-galeri { grid-template-columns: 1fr 1fr 1fr 1fr; }
+  .grid-galeri .item-lebar { grid-column: span 2; aspect-ratio: auto; }
+  .grid-galeri .ph { aspect-ratio: auto; min-height: 14rem; }
+}
+

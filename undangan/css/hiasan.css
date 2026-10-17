@@ -1,0 +1,42 @@
+/* hiasan.css : bunga SVG, kelopak, kilau, bingkai foto */
+
+/* ===== HIASAN (bunga SVG, kelopak jatuh, bingkai) ===== */
+.bagian, .hero { position: relative; overflow: hidden; }
+.bagian > .container, .hero > .container { position: relative; z-index: 1; }
+.hias { position: absolute; z-index: 0; pointer-events: none; width: clamp(9rem, 24vw, 20rem); height: clamp(9rem, 24vw, 20rem); }
+.hias-kiri-atas  { top: 0; left: 0; transform: scaleY(-1); }
+.hias-kanan-atas { top: 0; right: 0; transform: rotate(180deg); }
+.hias-kiri-bawah { bottom: 0; left: 0; }
+.hias-kanan-bawah { bottom: 0; right: 0; transform: scaleX(-1); }
+.hero .hias-kiri-atas, .hero .hias-kanan-atas { top: 3.5rem; }
+#cover .hias { filter: brightness(1.35); opacity: .9; }
+#cover::before { content: ""; position: absolute; inset: 1rem; border: 1px solid var(--emas); border-radius: 18px; pointer-events: none; }
+#cover > :not(.hias):not(.kelopak):not(.hias-png):not(.kilau) { position: relative; z-index: 1; }
+#cover { overflow: hidden; }
+
+/* latar lembut: blush di kanan atas, biru debu di kiri bawah */
+.bg-putih { background: radial-gradient(circle at 95% 0%, hsl(350, 55%, 93%), transparent 40%), radial-gradient(circle at 0% 100%, hsl(212, 40%, 91%), transparent 40%), var(--putih); }
+.hero::before { content: ""; position: absolute; left: -10%; bottom: -25%; width: 55vw; height: 55vw; border-radius: 50%; background: radial-gradient(circle, hsl(212, 40%, 88%), transparent 65%); opacity: .7; }
+.ph-hero { outline: 2px solid var(--emas); outline-offset: .9rem; }
+
+/* kelopak jatuh (dibuat oleh JS: buatKelopak) */
+.kelopak { position: absolute; top: -5%; z-index: 0; pointer-events: none; border-radius: 0 100% 0 100%; background: hsl(350, 65%, 87%); opacity: .8; animation: jatuh 10s linear infinite; }
+@keyframes jatuh {
+  0%   { transform: translate(0, -10vh) rotate(0); }
+  50%  { transform: translate(40px, 55vh) rotate(180deg); }
+  100% { transform: translate(-20px, 110vh) rotate(360deg); }
+}
+@media (prefers-reduced-motion: reduce) { .kelopak { display: none; } }
+
+/* ===== HIASAN TAMBAHAN: buket di foto, kilau, slot gambar PNG ===== */
+.kolom-foto { position: relative; }
+.buket { position: absolute; z-index: 2; pointer-events: none; width: clamp(6rem, 13vw, 10rem); height: clamp(5rem, 11vw, 8.5rem); filter: drop-shadow(0 4px 6px rgba(27, 42, 65, .2)); }
+.buket-kiri-bawah { left: -2%; bottom: -3%; }
+.buket-kanan-atas { right: -2%; top: -3%; transform: rotate(180deg); }
+.kilau { position: absolute; z-index: 0; pointer-events: none; color: var(--emas); animation: kilau 2.6s ease-in-out infinite; }
+@keyframes kilau { 0%, 100% { opacity: .1; transform: scale(.5); } 50% { opacity: 1; transform: scale(1.1); } }
+.hias-png { position: absolute; z-index: 0; pointer-events: none; width: clamp(10rem, 28vw, 24rem); }
+.hias-png.a { top: 0; left: 0; }
+.hias-png.b { bottom: 0; right: 0; transform: rotate(180deg); }
+@media (prefers-reduced-motion: reduce) { .kilau { display: none; } }
+
