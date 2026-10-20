@@ -1,6 +1,6 @@
-/* main.js : isi data, nama tamu, buka undangan, musik, dan penjalan awal */
+// main.js - mengisi data, membuka cover, musik, dan menjalankan semuanya (file terakhir)
 
-/* ===== 4. DOM: isi semua elemen data-isi dari DATA ===== */
+// Mengisi semua teks bertanda data-isi dari DATA
 function isiData() {
   DATA.tanggalPanjang = formatTanggal(DATA.tanggalAkad);
   document.querySelectorAll("[data-isi]").forEach((el) => {
@@ -8,31 +8,32 @@ function isiData() {
     if (DATA[kunci] !== undefined) el.innerHTML = DATA[kunci];
   });
   document.getElementById("noRek").textContent = DATA.noRek;
-  // String method: ambil huruf pertama nama -> monogram "R & S"
+
   document.getElementById("monogram").textContent =
     DATA.pria.charAt(0).toUpperCase() + " & " + DATA.wanita.charAt(0).toUpperCase();
   document.title = `Undangan ${DATA.pria} & ${DATA.wanita}`;
 }
 
-/* ===== 5. Nama tamu dari URL =====
-   Contoh: https://situsmu.vercel.app/?to=Budi%20dan%20Ani   */
+// Mengambil nama tamu dari alamat (?to=Nama) lalu mengisinya di cover dan form
 function isiNamaTamu() {
   const param = new URLSearchParams(window.location.search).get("to");
   if (param) {
     document.getElementById("namaTamu").textContent = param;
-    document.getElementById("nama").value = param;   // otomatis di form reservasi
+    document.getElementById("rNama").value = param;
+    document.getElementById("uNama").value = param;
   }
 }
 
-/* ===== 6. Event & classList ===== */
+// Membuka cover, menyalakan musik, dan memulai animasi
 function bukaUndangan() {
-  document.getElementById("cover").classList.add("terbuka");   // geser cover ke atas
+  document.getElementById("cover").classList.add("terbuka");
   document.body.classList.remove("terkunci");
-  setTimeout(() => document.getElementById("cover").style.display = "none", 1100); // setTimeout
+  setTimeout(() => document.getElementById("cover").style.display = "none", 1100);
   toggleMusik(true);
-  setTimeout(mulaiAnimasi, 500);   // animasi scroll mulai setelah cover terbuka
+  setTimeout(mulaiAnimasi, 500);
 }
 
+// Memutar atau menjeda musik
 function toggleMusik(paksaPutar) {
   const audio = document.getElementById("musik");
   const tombol = document.getElementById("btnMusik");
@@ -44,14 +45,15 @@ function toggleMusik(paksaPutar) {
   tombol.classList.toggle("putar", !audio.paused);
 }
 
-/* ===== Jalankan saat halaman siap ===== */
-buatKilau(document.getElementById("cover"), 10);
+// Dijalankan saat halaman dimuat
 buatKilau(document.getElementById("beranda"), 10);
 siapkanAnimasi();
-buatKelopak(document.getElementById("cover"), 14);   // GANTI angka untuk jumlah kelopak
-buatKelopak(document.getElementById("beranda"), 12);
+document.querySelectorAll(".sampul-mempelai, .bagian").forEach((el) => buatKelopak(el, 7));
 isiData();
 isiNamaTamu();
 tampilUcapan();
+perbaruiJmlHadir();
+periksaBuktiTersimpan();
 hitungMundur();
+// Hitung mundur diperbarui tiap detik
 timerHitung = setInterval(hitungMundur, 1000);

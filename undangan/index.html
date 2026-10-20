@@ -4,81 +4,49 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Undangan Pernikahan</title>
-  <!-- Bootstrap 5.3 (CSS) + Google Fonts -->
+  <!-- Bootstrap -->
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
-  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,700;1,500&family=Jost:wght@300;400;500&display=swap" rel="stylesheet">
-  <!-- External CSS -->
-  <!-- CSS dipecah per tugas. URUTAN PENTING: cover.css harus paling akhir -->
+  <!-- CSS -->
+  <link rel="stylesheet" href="css/fonts.css">
   <link rel="stylesheet" href="css/base.css">
   <link rel="stylesheet" href="css/layout.css">
   <link rel="stylesheet" href="css/components.css">
   <link rel="stylesheet" href="css/hiasan.css">
   <link rel="stylesheet" href="css/animasi.css">
+  <link rel="stylesheet" href="css/reservasi.css">
+  <link rel="stylesheet" href="css/kotak.css">
   <link rel="stylesheet" href="css/gradasi.css">
   <link rel="stylesheet" href="css/cover.css">
+  <link rel="stylesheet" href="css/cetak.css">
 </head>
 <body class="terkunci">
-<!-- ===== SPRITE HIASAN (SVG): bunga & ranting, dipakai ulang lewat <use> ===== -->
-<svg width="0" height="0" style="position:absolute" aria-hidden="true">
-  <defs>
-    <symbol id="bunga" viewBox="-20 -20 40 40">
-      <g fill="#f3c9d2" stroke="#d99aaa" stroke-width=".6">
-        <ellipse cx="0" cy="-10" rx="6" ry="10"/>
-        <ellipse cx="0" cy="-10" rx="6" ry="10" transform="rotate(72)"/>
-        <ellipse cx="0" cy="-10" rx="6" ry="10" transform="rotate(144)"/>
-        <ellipse cx="0" cy="-10" rx="6" ry="10" transform="rotate(216)"/>
-        <ellipse cx="0" cy="-10" rx="6" ry="10" transform="rotate(288)"/>
-      </g>
-      <circle r="4" fill="#b08d57"/>
-    </symbol>
-    <symbol id="ranting" viewBox="0 0 200 200">
-      <path d="M8 196 C 50 150 90 120 120 70 S 170 25 192 8" fill="none" stroke="#6f8aa8" stroke-width="2.5" stroke-linecap="round"/>
-      <g fill="#6f8aa8" opacity=".75">
-        <ellipse cx="30" cy="172" rx="14" ry="5" transform="rotate(-60 30 172)"/>
-        <ellipse cx="52" cy="150" rx="14" ry="5" transform="rotate(10 52 150)"/>
-        <ellipse cx="78" cy="130" rx="15" ry="5" transform="rotate(-70 78 130)"/>
-        <ellipse cx="96" cy="112" rx="15" ry="5" transform="rotate(0 96 112)"/>
-        <ellipse cx="138" cy="60" rx="14" ry="5" transform="rotate(-80 138 60)"/>
-        <ellipse cx="160" cy="42" rx="13" ry="5" transform="rotate(-10 160 42)"/>
-      </g>
-      <use href="#bunga" x="52" y="100" width="36" height="36"/>
-      <use href="#bunga" x="100" y="54" width="44" height="44"/>
-      <use href="#bunga" x="162" y="12" width="28" height="28"/>
-      <circle cx="14" cy="186" r="3" fill="#b08d57"/>
-    </symbol>
-    <symbol id="buket" viewBox="0 0 120 100">
-      <g fill="#6f8aa8" opacity=".8">
-        <ellipse cx="24" cy="86" rx="22" ry="7" transform="rotate(-30 24 86)"/>
-        <ellipse cx="86" cy="90" rx="24" ry="7" transform="rotate(25 86 90)"/>
-        <ellipse cx="60" cy="92" rx="20" ry="6" transform="rotate(-85 60 92)"/>
-      </g>
-      <use href="#bunga" x="6" y="28" width="46" height="46"/>
-      <use href="#bunga" x="52" y="4" width="58" height="58"/>
-      <use href="#bunga" x="58" y="50" width="40" height="40"/>
-      <circle cx="30" cy="20" r="3" fill="#b08d57"/><circle cx="108" cy="70" r="3" fill="#b08d57"/>
-    </symbol>
-  </defs>
-</svg>
 
 
-<!-- ===== COVER (layar pembuka) ===== -->
+<!-- COVER: layar pembuka sebelum isi undangan -->
 <header id="cover">
-  <img class="hias-png a" src="assets/hias/bunga-sudut.png" alt="" onerror="this.remove()"><img class="hias-png b" src="assets/hias/bunga-sudut.png" alt="" onerror="this.remove()">
-  <svg class="hias hias-kiri-atas" aria-hidden="true"><use href="#ranting" width="100%" height="100%"/></svg>
-  <svg class="hias hias-kanan-bawah" aria-hidden="true"><use href="#ranting" width="100%" height="100%"/></svg>
-  <p class="mb-3">Undangan Pernikahan</p>
-  <!-- Foto cover memakai assets/foto-hero.jpg. GANTI: foto lain, mis. assets/foto-cover.jpg -->
-  <figure class="ph foto-cover" data-label="Foto Cover"><img src="assets/foto-hero.jpg" alt="Foto mempelai" onerror="this.remove()"></figure>
-  <h1 class="judul-besar"><span data-isi="pria"></span><br class="d-md-none"> &amp; <br class="d-md-none"><span data-isi="wanita"></span></h1>
-  <p class="mb-0 fs-5" data-isi="tanggalPanjang"></p>
-  <hr class="garis-emas">
-  <p class="mb-0">Kepada Yth.</p>
-  <p class="fs-4 fw-medium" id="namaTamu">Tamu Undangan</p>
-  <!-- onclick = Inline Event JS -->
-  <button type="button" class="btn btn-emas btn-lg" onclick="bukaUndangan()">Buka Undangan</button>
+  <!-- Latar cover dan kabut putih transparan -->
+  <div class="cover-latar"></div>
+  <div class="cover-kabut"></div>
+  <div class="cover-konten">
+    <!-- Foto kedua mempelai di dalam bingkai lengkung -->
+    <div class="bingkai-cover">
+      <figure class="foto-kotak foto-cover" data-label="Foto Cover"><img src="assets/foto-mempelai.jpg" alt="Foto mempelai" onerror="this.remove()"></figure>
+      <img class="bingkai-img" src="assets/bingkai-cover.webp" alt="" aria-hidden="true">
+    </div>
+    <div class="cover-teks">
+      <p class="mb-1 label-cover">The Wedding Of</p>
+      <h1 class="judul-besar nama-pasangan"><span data-isi="pria"></span><span class="dan">&amp;</span><span data-isi="wanita"></span></h1>
+      <p class="mb-0 fs-5" data-isi="tanggalPanjang"></p>
+      <hr class="garis-emas mx-auto">
+      <p class="mb-0">Kepada Yth.</p>
+      <p class="fs-4 fw-medium" id="namaTamu">Tamu Undangan</p>
+      <!-- Tombol membuka undangan (memanggil bukaUndangan di main.js) -->
+      <button type="button" class="btn btn-pink btn-lg" onclick="bukaUndangan()">Buka Undangan</button>
+    </div>
+  </div>
 </header>
 
-<!-- ===== NAVBAR (Bootstrap) ===== -->
+<!-- NAVBAR: menu atas, menjadi hamburger di HP -->
 <nav class="navbar navbar-expand-lg fixed-top bar-atas">
   <div class="container">
     <a class="navbar-brand" href="#beranda" id="monogram">A &amp; B</a>
@@ -87,59 +55,55 @@
     </button>
     <div class="collapse navbar-collapse" id="menu">
       <ul class="navbar-nav ms-auto">
-        <!-- Link di halaman yang sama (id sebagai target) -->
+        <!-- Link menuju bagian di halaman yang sama -->
         <li class="nav-item"><a class="nav-link" href="#beranda">Beranda</a></li>
         <li class="nav-item"><a class="nav-link" href="#mempelai">Mempelai</a></li>
         <li class="nav-item"><a class="nav-link" href="#acara">Acara</a></li>
         <li class="nav-item"><a class="nav-link" href="#galeri">Galeri</a></li>
         <li class="nav-item"><a class="nav-link" href="#lokasi">Lokasi</a></li>
         <li class="nav-item"><a class="nav-link" href="#reservasi">Reservasi</a></li>
+        <li class="nav-item"><a class="nav-link" href="#hadiah">Hadiah</a></li>
+        <li class="nav-item"><a class="nav-link" href="#ucapan">Ucapan</a></li>
       </ul>
     </div>
   </div>
 </nav>
 
 <main>
-<!-- ===== BERANDA / HERO =====
-     Desktop: 2 kolom (teks kiri, foto kanan). Mobile: 1 kolom (foto di atas). -->
-<section id="beranda" class="hero">
-  <img class="hias-png a" src="assets/hias/bunga-sudut.png" alt="" onerror="this.remove()"><img class="hias-png b" src="assets/hias/bunga-sudut.png" alt="" onerror="this.remove()">
-  <!-- Hiasan bunga -->
-  <svg class="hias hias-kiri-atas" aria-hidden="true"><use href="#ranting" width="100%" height="100%"/></svg>
-  <svg class="hias hias-kanan-bawah" aria-hidden="true"><use href="#ranting" width="100%" height="100%"/></svg>
+<!-- BERANDA: sampul mempelai (teks dan foto berbingkai) -->
+<section id="beranda" class="sampul-mempelai">
   <div class="container">
     <div class="row align-items-center g-5">
-      <div class="col-12 col-lg-6 order-2 order-lg-1 text-center text-lg-start">
-        <p class="mb-2">We're Married!</p>
-        <h2 class="judul-besar">
-          <span data-isi="pria"></span> &amp; <span data-isi="wanita"></span>
-        </h2>
-        <p class="fs-5"><b data-isi="tanggalPanjang"></b><br><small>di <i data-isi="kota"></i></small></p>
-        <!-- Hitung mundur diisi JS -->
-        <div class="hitung d-flex gap-3 justify-content-center justify-content-lg-start" aria-live="off">
-          <div><span id="cdHari">0</span><small>hari</small></div>
-          <div><span id="cdJam">0</span><small>jam</small></div>
-          <div><span id="cdMenit">0</span><small>menit</small></div>
-          <div><span id="cdDetik">0</span><small>detik</small></div>
+      <div class="col-12 col-lg-6 order-2 order-lg-1 text-center">
+        <!-- Kotak transparan agar teks terbaca di atas latar -->
+        <div class="panel-kaca">
+          <p class="mb-2 label-mempelai">We're Married!</p>
+          <h2 class="judul-besar nama-pasangan"><span data-isi="pria"></span><span class="dan">&amp;</span><span data-isi="wanita"></span></h2>
+          <p class="fs-5 mb-3"><b data-isi="tanggalPanjang"></b><br><small>di <i data-isi="kota"></i></small></p>
+          <!-- Hitung mundur (angkanya diisi countdown.js) -->
+          <div class="hitung d-flex gap-3 justify-content-center" aria-live="off">
+            <div><span id="cdHari">0</span><small>hari</small></div>
+            <div><span id="cdJam">0</span><small>jam</small></div>
+            <div><span id="cdMenit">0</span><small>menit</small></div>
+            <div><span id="cdDetik">0</span><small>detik</small></div>
+          </div>
         </div>
       </div>
       <div class="col-12 col-lg-6 order-1 order-lg-2 kolom-foto">
-        <!-- GANTI: taruh foto di assets/foto-hero.jpg. Jika file belum ada, kotak placeholder tampil otomatis -->
-        <svg class="buket buket-kiri-bawah" aria-hidden="true"><use href="#buket" width="100%" height="100%"/></svg>
-        <svg class="buket buket-kanan-atas" aria-hidden="true"><use href="#buket" width="100%" height="100%"/></svg>
-        <figure class="ph ph-hero" data-label="Foto Utama (assets/foto-hero.jpg)">
-          <img src="assets/foto-hero.jpg" alt="Foto kedua mempelai" onerror="this.remove()">
-        </figure>
+        <div class="bingkai-mempelai">
+          <!-- Foto pasangan di dalam bingkai bunga -->
+          <figure class="foto-kotak foto-mempelai" data-label="Foto Utama (assets/foto-mempelai.jpg)">
+            <img src="assets/foto-mempelai.jpg" alt="Foto kedua mempelai" onerror="this.remove()">
+          </figure>
+          <img class="bingkai-img" src="assets/bingkai-mempelai.webp" alt="" aria-hidden="true">
+        </div>
       </div>
     </div>
   </div>
 </section>
 
-<!-- ===== MEMPELAI ===== -->
+<!-- MEMPELAI: profil pria dan wanita -->
 <section id="mempelai" class="bagian bg-putih">
-  <!-- Hiasan bunga -->
-  <svg class="hias hias-kiri-atas" aria-hidden="true"><use href="#ranting" width="100%" height="100%"/></svg>
-  <svg class="hias hias-kanan-bawah" aria-hidden="true"><use href="#ranting" width="100%" height="100%"/></svg>
   <div class="container">
     <h2 class="judul text-center">Mempelai</h2>
     <blockquote class="kutipan text-center mx-auto">
@@ -149,11 +113,12 @@
     <div class="row g-4 justify-content-center">
       <div class="col-12 col-md-6 col-xl-5">
         <div class="kartu text-center h-100">
-          <figure class="ph ph-bulat" data-label="Foto Pria (assets/foto-pria.jpg)">
-            <img src="assets/foto-pria.jpg" alt="Foto mempelai pria" onerror="this.remove()">
-          </figure>
+          <div class="bingkai-bulat">
+            <figure class="foto-kotak foto-bulat" data-label="Foto Pria"><img src="assets/foto-pria.jpg" alt="Foto mempelai pria" onerror="this.remove()"></figure>
+            <img class="bingkai-img" src="assets/bingkai-pria-wanita.webp" alt="" aria-hidden="true">
+          </div>
           <h3 data-isi="priaLengkap"></h3>
-          <!-- Description list -->
+          <!-- Daftar deskripsi: Putra/Putri dari -->
           <dl>
             <dt>Putra dari</dt>
             <dd data-isi="ortuPria"></dd>
@@ -162,9 +127,10 @@
       </div>
       <div class="col-12 col-md-6 col-xl-5">
         <div class="kartu text-center h-100">
-          <figure class="ph ph-bulat" data-label="Foto Wanita (assets/foto-wanita.jpg)">
-            <img src="assets/foto-wanita.jpg" alt="Foto mempelai wanita" onerror="this.remove()">
-          </figure>
+          <div class="bingkai-bulat balik">
+            <figure class="foto-kotak foto-bulat" data-label="Foto Wanita"><img src="assets/foto-wanita.jpg" alt="Foto mempelai wanita" onerror="this.remove()"></figure>
+            <img class="bingkai-img" src="assets/bingkai-pria-wanita.webp" alt="" aria-hidden="true">
+          </div>
           <h3 data-isi="wanitaLengkap"></h3>
           <dl>
             <dt>Putri dari</dt>
@@ -176,19 +142,15 @@
   </div>
 </section>
 
-<!-- ===== ACARA ===== -->
+<!-- ACARA: tabel waktu dan tempat, catatan untuk tamu -->
 <section id="acara" class="bagian">
-  <!-- Hiasan bunga -->
-  <svg class="hias hias-kanan-atas" aria-hidden="true"><use href="#ranting" width="100%" height="100%"/></svg>
-  <svg class="hias hias-kiri-bawah" aria-hidden="true"><use href="#ranting" width="100%" height="100%"/></svg>
   <div class="container">
     <h2 class="judul text-center">Rangkaian Acara</h2>
     <div class="row g-4 align-items-start">
-      <!-- Tabel dengan caption, colgroup, thead/tbody/tfoot, colspan & rowspan -->
+      <!-- Tabel jadwal (judul bertingkat dengan rowspan dan colspan) -->
       <div class="col-12 col-lg-7">
-        <div class="table-responsive">
+        <div class="table-responsive timbul">
           <table class="table table-bordered align-middle text-center bg-white">
-            <caption>Jadwal acara pernikahan</caption>
             <colgroup><col style="width:24%"><col style="width:36%"><col></colgroup>
             <thead>
               <tr><th rowspan="2">Acara</th><th colspan="2">Waktu dan Tempat</th></tr>
@@ -205,7 +167,7 @@
       <div class="col-12 col-lg-5">
         <div class="kartu">
           <h3 class="h5">Catatan untuk tamu</h3>
-          <!-- Nested list -->
+          <!-- NestedList -->
           <ul>
             <li>Mohon hadir 15 menit sebelum acara</li>
             <li>Protokol tamu
@@ -217,7 +179,11 @@
           </ul>
           <details>
             <summary>Tema pakaian</summary>
-            <p class="mb-0 mt-2"><mark>Dusty blue</mark> dan putih. <del>Hitam polos</del> sebaiknya dihindari.</p>
+            <ul class="mt-2 mb-1">
+              <li><span class="warna-contoh" style="background:#0e6b52"></span><mark>Hijau zamrud</mark></li>
+              <li><span class="warna-contoh" style="background:#6b4a3a"></span><mark>Cokelat mocha</mark></li>
+            </ul>
+            <p class="mb-0"><del>Hitam polos</del> sebaiknya dihindari.</p>
           </details>
         </div>
       </div>
@@ -225,30 +191,30 @@
   </div>
 </section>
 
-<!-- ===== GALERI (CSS Grid) ===== -->
+<!-- GALERI: foto dan video -->
 <section id="galeri" class="bagian bg-putih">
   <div class="container">
-    <h2 class="judul text-center">Galeri</h2>
+    <h2 class="judul text-center">The Moment of Us</h2>
     <div class="grid-galeri">
-      <!-- GANTI: foto di assets/galeri-1.jpg ... galeri-6.jpg. Jumlah item boleh ditambah/dikurangi -->
-      <figure class="ph item-lebar" data-label="Galeri 1"><img src="assets/galeri-1.jpg" alt="Galeri 1" onerror="this.remove()"></figure>
-      <figure class="ph" data-label="Galeri 2"><img src="assets/galeri-2.jpg" alt="Galeri 2" onerror="this.remove()"></figure>
-      <figure class="ph" data-label="Galeri 3"><img src="assets/galeri-3.jpg" alt="Galeri 3" onerror="this.remove()"></figure>
-      <figure class="ph" data-label="Galeri 4"><img src="assets/galeri-4.jpg" alt="Galeri 4" onerror="this.remove()"></figure>
-      <figure class="ph" data-label="Galeri 5"><img src="assets/galeri-5.jpg" alt="Galeri 5" onerror="this.remove()"></figure>
-      <figure class="ph item-lebar" data-label="Galeri 6"><img src="assets/galeri-6.jpg" alt="Galeri 6" onerror="this.remove()"></figure>
+      <!-- Foto galeri (galeri-1.jpg sampai galeri-6.jpg) -->
+      <figure class="foto-kotak item-lebar" data-label="Galeri 1"><img src="assets/galeri-1.jpg" alt="Galeri 1" onerror="this.remove()"></figure>
+      <figure class="foto-kotak" data-label="Galeri 2"><img src="assets/galeri-2.jpg" alt="Galeri 2" onerror="this.remove()"></figure>
+      <figure class="foto-kotak" data-label="Galeri 3"><img src="assets/galeri-3.jpg" alt="Galeri 3" onerror="this.remove()"></figure>
+      <figure class="foto-kotak" data-label="Galeri 4"><img src="assets/galeri-4.jpg" alt="Galeri 4" onerror="this.remove()"></figure>
+      <figure class="foto-kotak" data-label="Galeri 5"><img src="assets/galeri-5.jpg" alt="Galeri 5" onerror="this.remove()"></figure>
+      <figure class="foto-kotak item-lebar" data-label="Galeri 6"><img src="assets/galeri-6.jpg" alt="Galeri 6" onerror="this.remove()"></figure>
     </div>
 
     <div class="row g-4 mt-4 align-items-center">
       <div class="col-12 col-lg-6">
-        <!-- Video lokal. GANTI: assets/video.mp4 dan assets/poster.jpg -->
+        <!-- Video dari berkas sendiri -->
         <video class="w-100 rounded-4" controls poster="assets/poster.jpg">
           <source src="assets/video.mp4" type="video/mp4">
           Browser Anda tidak mendukung elemen video.
         </video>
       </div>
       <div class="col-12 col-lg-6">
-        <!-- Embed YouTube. GANTI: ID video setelah /embed/ -->
+        <!-- Video YouTube -->
         <div class="ratio ratio-16x9">
           <iframe src="https://www.youtube.com/embed/OxglpytZOuo" title="Video prewedding" allowfullscreen></iframe>
         </div>
@@ -257,13 +223,13 @@
   </div>
 </section>
 
-<!-- ===== LOKASI ===== -->
+<!-- LOKASI: peta dan tombol Google Maps -->
 <section id="lokasi" class="bagian">
   <div class="container">
     <h2 class="judul text-center">Lokasi</h2>
     <div class="row g-4">
       <div class="col-12 col-lg-8">
-        <!-- GANTI: ubah q=... dengan nama/alamat lokasi acara -->
+        <!-- Peta Google Maps -->
         <div class="ratio ratio-16x9">
           <iframe id="peta" title="Peta lokasi" src="https://www.google.com/maps?q=Grand+Fullerton+Ballroom,+Jl.+Basuki+Rahmat+No.16-18,+Surabaya&output=embed" loading="lazy"></iframe>
         </div>
@@ -272,70 +238,56 @@
         <div class="kartu h-100 d-flex flex-column justify-content-center text-center">
           <h3 class="h5" data-isi="tempat"></h3>
           <p data-isi="alamat"></p>
-          <a class="btn btn-emas" id="btnPeta" href="https://maps.app.goo.gl/XD2ULECSNa9oQPFF9" target="_blank" rel="noopener">Buka di Google Maps</a>
+          <a class="btn btn-pink" id="btnPeta" href="https://maps.app.goo.gl/XD2ULECSNa9oQPFF9" target="_blank" rel="noopener">Buka di Google Maps</a>
         </div>
       </div>
     </div>
   </div>
 </section>
 
-<!-- ===== RESERVASI & UCAPAN ===== -->
-<section id="reservasi" class="bagian bg-putih">
-  <!-- Hiasan bunga -->
-  <svg class="hias hias-kanan-atas" aria-hidden="true"><use href="#ranting" width="100%" height="100%"/></svg>
-  <svg class="hias hias-kiri-bawah" aria-hidden="true"><use href="#ranting" width="100%" height="100%"/></svg>
+<!-- RESERVASI: tombol pembuka formulir RSVP -->
+<section id="reservasi" class="bagian">
+  <div class="container text-center">
+    <h2 class="judul">Reservasi</h2>
+    <p class="mx-auto isi-sempit fs-5" id="teksHadir"></p>
+    <p class="mx-auto isi-sempit">Merupakan kehormatan dan kebahagiaan bagi kami apabila Bapak/Ibu/Saudara/i berkenan hadir dan memberikan doa restu.</p>
+    <button type="button" class="btn btn-pink btn-lg" data-bs-toggle="modal" data-bs-target="#modalReservasi">Reservasi (RSVP)</button>
+    <div class="mt-3"><button type="button" id="btnLihatBukti" class="btn btn-outline-secondary d-none" onclick="bukaBuktiTersimpan()">Lihat bukti kehadiran saya</button></div>
+  </div>
+</section>
+
+<!-- HADIAH: tombol pembuka amplop digital -->
+<section id="hadiah" class="bagian">
+  <div class="container text-center">
+    <h2 class="judul">Kirim Hadiah</h2>
+    <p class="mx-auto isi-sempit">Doa restu Anda sudah menjadi hadiah terbaik bagi kami. Bila ingin berbagi tanda kasih, silakan melalui amplop digital.</p>
+    <button type="button" class="btn btn-pink btn-lg" data-bs-toggle="modal" data-bs-target="#modalHadiah">Kirim Hadiah Sekarang</button>
+  </div>
+</section>
+
+<!-- UCAPAN: formulir dan daftar ucapan tamu -->
+<section id="ucapan" class="bagian">
   <div class="container">
-    <h2 class="judul text-center">Reservasi dan Ucapan</h2>
+    <h2 class="judul text-center">Ucapan dan Doa</h2>
     <div class="row g-4">
-      <div class="col-12 col-lg-6">
+      <div class="col-12 col-lg-5">
         <div class="kartu">
-          <!-- return validasiForm() = validasi JS sebelum kirim -->
-          <form id="formRsvp" onsubmit="return validasiForm()" novalidate>
-            <fieldset>
-              <legend class="h5">Reservasi kehadiran</legend>
-              <div class="mb-3">
-                <label for="nama" class="form-label">Nama</label>
-                <input type="text" class="form-control" id="nama" name="nama" placeholder="Nama lengkap" maxlength="40" required>
-              </div>
-              <div class="mb-3">
-                <label for="email" class="form-label">Email</label>
-                <input type="email" class="form-control" id="email" name="email" placeholder="nama@email.com">
-              </div>
-              <div class="row">
-                <div class="col-6 mb-3">
-                  <label for="jumlah" class="form-label">Jumlah tamu</label>
-                  <input type="number" class="form-control" id="jumlah" name="jumlah" min="1" max="5" value="1">
-                </div>
-                <div class="col-6 mb-3">
-                  <label for="hubungan" class="form-label">Hubungan</label>
-                  <select class="form-select" id="hubungan" name="hubungan">
-                    <option value="Keluarga">Keluarga</option>
-                    <option value="Teman">Teman</option>
-                    <option value="Rekan">Rekan kerja</option>
-                  </select>
-                </div>
-              </div>
-              <div class="mb-3">
-                <span class="form-label d-block">Kehadiran</span>
-                <div class="form-check form-check-inline"><input class="form-check-input" type="radio" name="hadir" id="h1" value="Hadir" checked><label class="form-check-label" for="h1">Hadir</label></div>
-                <div class="form-check form-check-inline"><input class="form-check-input" type="radio" name="hadir" id="h2" value="Tidak"><label class="form-check-label" for="h2">Tidak hadir</label></div>
-              </div>
-              <div class="mb-3">
-                <label for="pesan" class="form-label">Ucapan</label>
-                <textarea class="form-control" id="pesan" name="pesan" rows="3" placeholder="Tulis ucapan untuk mempelai" required></textarea>
-              </div>
-              <div class="form-check mb-3">
-                <input class="form-check-input" type="checkbox" id="tampil" checked>
-                <label class="form-check-label" for="tampil">Tampilkan ucapan saya di bawah</label>
-              </div>
-              <div id="pesanForm" class="alert d-none" role="alert"></div>
-              <button type="submit" class="btn btn-emas">Kirim</button>
-              <button type="reset" class="btn btn-outline-secondary">Reset</button>
-            </fieldset>
+          <form id="formUcapan" onsubmit="return kirimUcapan()" novalidate>
+            <h3 class="h5">Kirim ucapan</h3>
+            <div class="mb-3">
+              <label for="uNama" class="form-label">Nama</label>
+              <input type="text" class="form-control" id="uNama" placeholder="Nama Anda" maxlength="40" required>
+            </div>
+            <div class="mb-3">
+              <label for="uPesan" class="form-label">Ucapan</label>
+              <textarea class="form-control" id="uPesan" rows="4" placeholder="Tulis ucapan dan doa untuk mempelai" required></textarea>
+            </div>
+            <div id="pesanUcapan" class="alert d-none" role="alert"></div>
+            <button type="submit" class="btn btn-pink">Kirim Ucapan</button>
           </form>
         </div>
       </div>
-      <div class="col-12 col-lg-6">
+      <div class="col-12 col-lg-7">
         <div class="kartu">
           <h3 class="h5">Ucapan tamu <small class="text-muted" id="jmlUcapan"></small></h3>
           <div id="daftarUcapan" class="daftar-ucapan"></div>
@@ -344,47 +296,133 @@
     </div>
   </div>
 </section>
-
-<!-- ===== AMPLOP DIGITAL ===== -->
-<section id="hadiah" class="bagian">
-  <!-- Hiasan bunga -->
-  <svg class="hias hias-kiri-bawah" aria-hidden="true"><use href="#ranting" width="100%" height="100%"/></svg>
-  <svg class="hias hias-kanan-bawah" aria-hidden="true"><use href="#ranting" width="100%" height="100%"/></svg>
-  <div class="container text-center">
-    <h2 class="judul">Wedding Gift</h2>
-    <p class="mx-auto isi-sempit">Doa restu Anda sudah menjadi hadiah terbaik bagi kami. Bila ingin berbagi, silakan kirim melalui rekening berikut.</p>
-    <div class="kartu mx-auto isi-sempit">
-      <p class="mb-1" data-isi="bank"></p>
-      <p class="fs-3 mb-1" id="noRek"></p>
-      <p><small>a.n. <span data-isi="atasNama"></span></small></p>
-      <button type="button" class="btn btn-emas" onclick="salinRekening()">Salin nomor rekening</button>
-      <!-- Tag <object> dengan fallback. GANTI: assets/qris.png -->
-      <object data="assets/qris.png" type="image/png" width="180" height="180" class="mt-3">
-        <p class="mb-0 mt-3"><small>QRIS belum ditambahkan (assets/qris.png)</small></p>
-      </object>
-    </div>
-  </div>
-</section>
 </main>
 
+<!-- FOOTER -->
 <footer class="kaki text-center">
   <p class="mb-1">Terima kasih atas doa dan kehadiran Anda.</p>
   <p class="mb-0"><small>&copy; 2026 <span data-isi="pria"></span> &amp; <span data-isi="wanita"></span> &#183; Dibuat untuk tugas PBP</small></p>
 </footer>
 
-<!-- Tombol musik melayang. GANTI: assets/musik.mp3 -->
+<!-- WINDOW RESERVASI: formulir RSVP -->
+<div class="modal fade" id="modalReservasi" tabindex="-1" aria-labelledby="judulReservasi" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+      <img class="header-window" src="assets/header-window.webp" alt="" aria-hidden="true">
+      <div class="modal-header">
+        <h3 class="modal-title h4" id="judulReservasi">Reservasi (RSVP)</h3>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Tutup"></button>
+      </div>
+      <!-- Form diperiksa dulu oleh validasiReservasi() sebelum dikirim -->
+      <form id="formReservasi" onsubmit="return validasiReservasi()" onreset="setTimeout(buatKolomNama, 0)" novalidate>
+        <div class="modal-body">
+          <fieldset>
+            <legend class="visually-hidden">Data reservasi</legend>
+            <div class="mb-3">
+              <label for="rNama" class="form-label">Nama (pemesan)</label>
+              <input type="text" class="form-control" id="rNama" placeholder="Nama lengkap" maxlength="40" required>
+            </div>
+            <div class="mb-3">
+              <label for="rEmail" class="form-label">Email</label>
+              <input type="email" class="form-control" id="rEmail" placeholder="nama@email.com">
+            </div>
+            <div class="row">
+              <div class="col-6 mb-3">
+                <label for="rJumlah" class="form-label">Jumlah tamu</label>
+                <input type="number" class="form-control" id="rJumlah" min="1" max="5" value="1" oninput="buatKolomNama()">
+              </div>
+              <div class="col-6 mb-3">
+                <label for="rHubungan" class="form-label">Hubungan</label>
+                <select class="form-select" id="rHubungan">
+                  <option value="Keluarga">Keluarga</option>
+                  <option value="Teman">Teman</option>
+                  <option value="Rekan">Rekan kerja</option>
+                </select>
+              </div>
+            </div>
+            <!-- Kolom nama tamu 2 dan seterusnya dibuat otomatis oleh JS (maksimal 5) -->
+            <div id="namaTambahan"></div>
+            <p class="small text-muted mb-3">Satu bukti kehadiran berlaku untuk maksimal 5 tamu. Isi nama semua tamu yang hadir.</p>
+            <div class="mb-2">
+              <span class="form-label d-block">Kehadiran</span>
+              <div class="form-check form-check-inline"><input class="form-check-input" type="radio" name="hadir" id="h1" value="Hadir" checked onchange="buatKolomNama()"><label class="form-check-label" for="h1">Hadir</label></div>
+              <div class="form-check form-check-inline"><input class="form-check-input" type="radio" name="hadir" id="h2" value="Tidak" onchange="buatKolomNama()"><label class="form-check-label" for="h2">Tidak hadir</label></div>
+            </div>
+          </fieldset>
+          <div id="pesanReservasi" class="alert d-none mt-3" role="alert"></div>
+        </div>
+        <div class="modal-footer">
+          <button type="reset" class="btn btn-outline-secondary">Reset</button>
+          <button type="submit" class="btn btn-pink">Kirim</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+
+<!-- WINDOW HADIAH: nomor rekening dan QRIS -->
+<div class="modal fade" id="modalHadiah" tabindex="-1" aria-labelledby="judulHadiah" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+      <img class="header-window" src="assets/header-window.webp" alt="" aria-hidden="true">
+      <div class="modal-header">
+        <h3 class="modal-title h4" id="judulHadiah">Amplop Digital</h3>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Tutup"></button>
+      </div>
+      <div class="modal-body text-center">
+        <div class="kotak-rekening">
+          <p class="mb-1" data-isi="bank"></p>
+          <p class="fs-3 mb-1" id="noRek"></p>
+          <p class="mb-3"><small>a.n. <span data-isi="atasNama"></span></small></p>
+          <button type="button" class="btn btn-pink" onclick="salinRekening()">Salin nomor rekening</button>
+        </div>
+        <!-- QRIS -->
+        <object data="assets/qris.png" type="image/png" width="240" height="240" class="mt-3" style="max-width: 100%">
+          <p class="mb-0 mt-3"><small>QRIS belum ditambahkan (assets/qris.png)</small></p>
+        </object>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<!-- WINDOW BUKTI KEHADIRAN: muncul setelah reservasi Hadir -->
+<div class="modal fade" id="modalBukti" tabindex="-1" aria-labelledby="judulBukti" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h3 class="modal-title h4" id="judulBukti">Bukti Kehadiran</h3>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Tutup"></button>
+      </div>
+      <div class="modal-body text-center" id="areaCetak">
+        <!--Bukti digambar oleh bukti.js di kanvas ini-->
+        <canvas id="kanvasBukti" width="1024" height="1536" aria-label="Bukti kehadiran"></canvas>
+        <p class="small mt-2 mb-0">Simpan bukti ini dan tunjukkan kepada penerima tamu saat tiba.</p>
+      </div>
+      <div class="modal-footer justify-content-center">
+        <button type="button" class="btn btn-pink" onclick="unduhBukti()">Unduh Bukti (PNG)</button>
+        <button type="button" class="btn btn-outline-secondary" onclick="window.print()">Cetak / PDF</button>
+      </div>
+    </div>
+  </div>
+</div>
+<img id="latarBukti" class="d-none" src="assets/latar-bukti.jpg" alt="" aria-hidden="true">
+
+<!--Musik latar dan tombol putar/jeda-->
 <audio id="musik" loop><source src="assets/musik.mp3" type="audio/mpeg"></audio>
 <button type="button" id="btnMusik" class="btn-musik" onclick="toggleMusik()" aria-label="Putar atau jeda musik">&#9835;</button>
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
-<!-- External Script -->
-<!-- JS dipecah per fungsi. URUTAN PENTING: data.js dulu, main.js paling akhir -->
+<!--JS-->
 <script src="js/data.js"></script>
 <script src="js/utils.js"></script>
 <script src="js/hiasan.js"></script>
 <script src="js/animasi.js"></script>
 <script src="js/countdown.js"></script>
-<script src="js/rsvp.js"></script>
+<script src="js/bukti.js"></script>
+<script src="js/reservasi.js"></script>
+<script src="js/ucapan.js"></script>
+<script src="js/hadiah.js"></script>
 <script src="js/main.js"></script>
 </body>
 </html>

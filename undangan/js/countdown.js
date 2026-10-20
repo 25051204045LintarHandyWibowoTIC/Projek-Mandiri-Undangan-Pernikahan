@@ -1,8 +1,8 @@
-/* countdown.js : hitung mundur menuju hari acara */
+// countdown.js - hitung mundur menuju hari acara
 
-/* ===== 7. Date + setInterval: hitung mundur ===== */
+// Menghitung dan menampilkan sisa waktu menuju hari acara (dipanggil tiap detik)
 function hitungMundur() {
-  const selisih = DATA.tanggalAkad - new Date();   // operator aritmatika (ms)
+  const selisih = DATA.tanggalAkad - new Date();
   if (selisih <= 0) {
     document.querySelector(".hitung").innerHTML = "<p class='fs-5'>Hari bahagia telah tiba</p>";
     clearInterval(timerHitung);
@@ -14,4 +14,3 @@ function hitungMundur() {
   document.getElementById("cdMenit").textContent = dua(Math.floor((detik % 3600) / 60));
   document.getElementById("cdDetik").textContent = dua(detik % 60);
 }
-

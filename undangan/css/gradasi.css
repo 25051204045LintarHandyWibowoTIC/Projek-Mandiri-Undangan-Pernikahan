@@ -1,15 +1,18 @@
-/* gradasi.css : gradasi latar biru + pink tiap bagian */
+/* gradasi.css - latar halaman dan gradasi pink tiap bagian */
 
-/* ===== GRADASI LATAR PER BAGIAN (biru + pink) =====
-   Warna bawah satu bagian = warna atas bagian berikutnya, jadi sambungannya mulus.
-   GANTI: ubah kode warna di sini untuk menyesuaikan nuansa. */
-:root { --pink-l: #fbeaf1; --biru-l: #e9f0fa; --lila-l: #f1ecfa; }
-#beranda { background: radial-gradient(circle at 88% 6%, rgba(244, 170, 196, .35), transparent 45%), radial-gradient(circle at 4% 96%, rgba(120, 160, 215, .28), transparent 48%), linear-gradient(165deg, #fdf3f6, #eef3fb); }
-#mempelai { background: radial-gradient(circle at 8% 10%, rgba(120, 160, 215, .22), transparent 42%), radial-gradient(circle at 94% 92%, rgba(244, 170, 196, .3), transparent 45%), linear-gradient(180deg, #eef3fb, #fbeff3); }
-#acara { background: radial-gradient(circle at 92% 8%, rgba(244, 170, 196, .3), transparent 42%), radial-gradient(circle at 6% 90%, rgba(120, 160, 215, .25), transparent 45%), linear-gradient(180deg, #fbeff3, #e9f0fa); }
-#galeri { background: radial-gradient(circle at 50% 0%, rgba(190, 170, 230, .22), transparent 45%), linear-gradient(135deg, #e9f0fa 0%, #fbeaf1 55%, #f1ecfa 100%); }
-#lokasi { background: radial-gradient(circle at 10% 15%, rgba(244, 170, 196, .28), transparent 42%), radial-gradient(circle at 92% 88%, rgba(120, 160, 215, .26), transparent 45%), linear-gradient(180deg, #fbeaf1, #eaf1fb); }
-#reservasi { background: radial-gradient(circle at 90% 10%, rgba(120, 160, 215, .25), transparent 42%), radial-gradient(circle at 5% 92%, rgba(244, 170, 196, .3), transparent 45%), linear-gradient(165deg, #eaf1fb, #fdeef3); }
-#hadiah { background: radial-gradient(circle at 50% 100%, rgba(120, 160, 215, .28), transparent 50%), linear-gradient(180deg, #fdeef3, #dfe9f7); }
-.kaki { background: linear-gradient(135deg, #1b2a41 0%, #3b4f6b 55%, #a56c8a 100%); }
+/* Latar gambar tetap di belakang seluruh isi */
+body::before { content: ""; position: fixed; inset: 0; z-index: -1; background: url("../assets/latar-isi.jpg") center top / cover no-repeat, #fdf0f3; }
 
+/* Gradasi pink transparan tiap bagian (angka terakhir rgba = kepekatan) */
+#beranda   { background: radial-gradient(circle at 85% 10%, rgba(244, 150, 190, .28), transparent 45%), linear-gradient(180deg, rgba(255, 255, 255, .30), rgba(255, 228, 238, .40)); }
+#mempelai  { background: linear-gradient(180deg, rgba(255, 255, 255, .50), rgba(255, 236, 243, .45)); }
+#acara     { background: radial-gradient(circle at 10% 90%, rgba(244, 150, 190, .22), transparent 45%), linear-gradient(180deg, rgba(255, 236, 243, .45), rgba(255, 255, 255, .40)); }
+
+/* Galeri: foto pohon sakura dengan kabut pink */
+#galeri    { background: linear-gradient(180deg, rgba(255, 236, 243, .64), rgba(252, 215, 230, .52)), url("../assets/latar-moment.jpg") center 60% / cover no-repeat; }
+#lokasi    { background: radial-gradient(circle at 90% 10%, rgba(244, 150, 190, .22), transparent 45%), linear-gradient(180deg, rgba(255, 245, 249, .45), rgba(255, 228, 238, .45)); }
+#reservasi { background: linear-gradient(180deg, rgba(255, 228, 238, .50), rgba(252, 215, 230, .40)); }
+#hadiah    { background: linear-gradient(180deg, rgba(252, 215, 230, .40), rgba(255, 236, 243, .50)); }
+#ucapan    { background: linear-gradient(180deg, rgba(255, 236, 243, .50), rgba(255, 255, 255, .45)); }
+/* Footer bergradasi pink tua */
+.kaki      { background: linear-gradient(135deg, #b84c7d, #e0508f 60%, #f08fb5); }

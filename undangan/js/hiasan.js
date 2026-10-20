@@ -1,20 +1,21 @@
-/* hiasan.js : kelopak jatuh dan kilau bintang */
+// hiasan.js - membuat kelopak jatuh dan kilau
 
-/* ===== 11. Hiasan kelopak jatuh (DOM + Math.random) ===== */
+// Membuat kelopak sakura jatuh di dalam sebuah bagian
 function buatKelopak(wadah, jumlah) {
   for (let i = 0; i < jumlah; i++) {
     const k = document.createElement("span");
     k.className = "kelopak";
-    const ukuran = 8 + Math.random() * 10;                      // 8-18 px
+    const ukuran = 8 + Math.random() * 10;
     k.style.width = k.style.height = ukuran + "px";
     k.style.left = Math.random() * 100 + "%";
     k.style.animationDuration = 9 + Math.random() * 8 + "s";
-    k.style.animationDelay = -Math.random() * 12 + "s";        // negatif = langsung berjalan
+    // Jeda negatif agar kelopak sudah bergerak saat halaman dibuka
+    k.style.animationDelay = -Math.random() * 12 + "s";
     wadah.appendChild(k);
   }
 }
 
-/* ===== 12. Kilau bintang kecil ===== */
+// Membuat bintang emas kecil yang berkedip
 function buatKilau(wadah, jumlah) {
   for (let i = 0; i < jumlah; i++) {
     const k = document.createElement("span");
@@ -27,4 +28,3 @@ function buatKilau(wadah, jumlah) {
     wadah.appendChild(k);
   }
 }
-
